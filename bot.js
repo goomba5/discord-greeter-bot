@@ -1,10 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const auth = require('./auth.json');
-const { prefix } = require('./auth.json');
+const { token, prefix } = require('./auth.json');
 
 // command enums
-const CommandEnum = Object.freeze({ "strike": "strike", "info": "info", "ping": "ping" });
+const CommandEnum = Object.freeze({ "strike": "strike", "info": "info", "ping": "ping", "server": "server" });
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -32,7 +31,11 @@ client.on("message", msg => {
             return msg.channel.send(`Commannd name: ${command}\nArguments: ${args}`);
         }
     }
+
+    if (command === `${CommandEnum.server}`) {
+        return msg.channel.send(`This server (or guild) is called ${msg.guild.name}!\nTotal members: ${msg.guild.memberCount}`);
+    }
 })
 
 
-client.login(auth.token);
+client.login(token);
