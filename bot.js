@@ -7,3 +7,11 @@ client.on("ready", () => {
 })
 
 client.login(auth.token);
+
+client.on("message", msg => {
+    if (msg.content === "ping") {
+        msg.reply("pong");
+    }
+})
+
+client.login(auth.token);
