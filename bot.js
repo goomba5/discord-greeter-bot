@@ -12,6 +12,9 @@ client.on("message", msg => {
     if (msg.content === "ping") {
         msg.reply("pong");
     }
+    if (msg.content === "Strike!") {
+        msg.reply("We've stepped into a war with the Cabal. Let's get to taking out their command one by one.")
+    }
 })
 
 client.login(auth.token);
